@@ -144,7 +144,7 @@ export default async function buildElement() {
       '//SWIPER_STYLES',
       `const SwiperFontCSS = \`${fontStyles}\`; const SwiperCSS = \`${cssStylesBundle}\`;`,
     )
-    .replace('//IMPORT_SWIPER', `import Swiper from 'swiper/bundle';`)
+    .replace('//IMPORT_SWIPER', `import Swiper from '@abasb75/swiper/bundle';`)
     .replace('//EXPORT', `export { SwiperContainer, SwiperSlide, register };`);
 
   fs.writeFileSync(path.resolve(outputDir, 'element/swiper-element-bundle.js'), esmBundleContent);
@@ -154,7 +154,7 @@ export default async function buildElement() {
       '//SWIPER_STYLES',
       `const SwiperFontCSS = \`${fontStyles}\`; const SwiperCSS = \`${cssStylesCore}\`;`,
     )
-    .replace('//IMPORT_SWIPER', `import Swiper from 'swiper';`)
+    .replace('//IMPORT_SWIPER', `import Swiper from '@abasb75/swiper';`)
     .replace('//EXPORT', `export { SwiperContainer, SwiperSlide, register };`);
   fs.writeFileSync(path.resolve(outputDir, 'element/swiper-element.js'), esmContent);
 
@@ -167,8 +167,8 @@ export default async function buildElement() {
         replace({
           delimiters: ['', ''],
           '//SWIPER_STYLES': `const SwiperFontCSS = \`${fontStyles}\`; const SwiperCSS = \`${cssStylesBundle}\`;`,
-          [`import Swiper from 'swiper/bundle';`]: `import Swiper from '../swiper-bundle.esm.js';`,
-          [`import Swiper from 'swiper';`]: `import Swiper from '../swiper.esm.js';`,
+          [`import Swiper from '@abasb75/swiper/bundle';`]: `import Swiper from '../swiper-bundle.esm.js';`,
+          [`import Swiper from '@abasb75/swiper';`]: `import Swiper from '../swiper.esm.js';`,
           '//BROWSER_REGISTER': `register()`,
           'export { SwiperContainer, SwiperSlide, register };': ``,
         }),

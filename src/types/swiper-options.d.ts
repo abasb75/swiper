@@ -30,7 +30,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * import Swiper, { Navigation, Pagination } from 'swiper';
+   * import Swiper, { Navigation, Pagination } from '@abasb75/swiper';
    *
    * const swiper = new Swiper('.swiper', {
    *    modules: [ Navigation, Pagination ],
