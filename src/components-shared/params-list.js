@@ -89,6 +89,9 @@ const paramsList = [
   'observeParents',
   'observeSlideChildren',
 
+  // added by @abas75
+  'activeLastSlideClass',
+
   // modules
   'a11y',
   '_autoplay',

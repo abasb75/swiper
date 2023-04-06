@@ -86,7 +86,6 @@ export default function Pagination({ swiper, extendParams, on, emit }) {
           slideTo: false,
         });
       }
-
       swiper.slideToLoop(index);
     } else {
       swiper.slideTo(index);
@@ -117,6 +116,10 @@ export default function Pagination({ swiper, extendParams, on, emit }) {
           : swiper.realIndex;
     } else if (typeof swiper.snapIndex !== 'undefined') {
       current = swiper.snapIndex;
+      /* @abasb75 */
+      if (swiper.params.activeLastSlideClass) {
+        current = swiper.activeIndex;
+      } /* */
     } else {
       current = swiper.activeIndex || 0;
     }
@@ -264,9 +267,10 @@ export default function Pagination({ swiper, extendParams, on, emit }) {
     el = makeElementsArray(el);
     let paginationHTML = '';
     if (params.type === 'bullets') {
-      let numberOfBullets = swiper.params.loop
-        ? Math.ceil(slidesLength / swiper.params.slidesPerGroup)
-        : swiper.snapGrid.length;
+      let numberOfBullets =
+        swiper.params.loop || swiper.params.activeLastSlideClass // @abasb75
+          ? Math.ceil(slidesLength / swiper.params.slidesPerGroup)
+          : swiper.snapGrid.length;
       if (
         swiper.params.freeMode &&
         swiper.params.freeMode.enabled &&
@@ -282,6 +286,7 @@ export default function Pagination({ swiper, extendParams, on, emit }) {
         }
       }
     }
+
     if (params.type === 'fraction') {
       if (params.renderFraction) {
         paginationHTML = params.renderFraction.call(swiper, params.currentClass, params.totalClass);

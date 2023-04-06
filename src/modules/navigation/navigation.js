@@ -68,6 +68,13 @@ export default function Navigation({ swiper, extendParams, on, emit }) {
       return;
     }
 
+    if (swiper.params.activeLastSlideClass) {
+      const isEnd = swiper.activeIndex === swiper.slides.length - 1;
+      toggleEl(prevEl, swiper.isBeginning && !swiper.params.rewind);
+      toggleEl(nextEl, isEnd && !swiper.params.rewind);
+      return;
+    }
+
     toggleEl(prevEl, swiper.isBeginning && !swiper.params.rewind);
     toggleEl(nextEl, swiper.isEnd && !swiper.params.rewind);
   }
@@ -79,6 +86,14 @@ export default function Navigation({ swiper, extendParams, on, emit }) {
   }
   function onNextClick(e) {
     e.preventDefault();
+    if (swiper.params.activeLastSlideClass) {
+      /* @abasb75 */
+      const isEnd = swiper.activeIndex === swiper.slides.length - 1;
+      if (isEnd && !swiper.params.loop && !swiper.params.rewind) return;
+      swiper.slideNext();
+      emit('navigationNext');
+      return;
+    }
     if (swiper.isEnd && !swiper.params.loop && !swiper.params.rewind) return;
     swiper.slideNext();
     emit('navigationNext');
@@ -131,6 +146,15 @@ export default function Navigation({ swiper, extendParams, on, emit }) {
     prevEl.forEach((el) => destroyButton(el, 'prev'));
   }
 
+  /* @abasb75 */
+  on('navigationPrev navigationNext slideChange', () => {
+    if (swiper.params.activeLastSlideClass) {
+      update();
+    }
+  });
+
+  /* */
+
   on('init', () => {
     if (swiper.params.navigation.enabled === false) {
       // eslint-disable-next-line
@@ -141,7 +165,9 @@ export default function Navigation({ swiper, extendParams, on, emit }) {
     }
   });
   on('toEdge fromEdge lock unlock', () => {
-    update();
+    if (!swiper.params.activeLastSlideClass) {
+      update();
+    }
   });
   on('destroy', () => {
     destroy();

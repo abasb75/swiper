@@ -35,11 +35,13 @@ export default function slideTo(
 
   const skip = Math.min(swiper.params.slidesPerGroupSkip, slideIndex);
   let snapIndex = skip + Math.floor((slideIndex - skip) / swiper.params.slidesPerGroup);
+
   if (snapIndex >= snapGrid.length) snapIndex = snapGrid.length - 1;
 
   const translate = -snapGrid[snapIndex];
+
   // Normalize slideIndex
-  if (params.normalizeSlideIndex) {
+  if (params.normalizeSlideIndex && !params.activeLastSlideClass) {
     for (let i = 0; i < slidesGrid.length; i += 1) {
       const normalizedTranslate = -Math.floor(translate * 100);
       const normalizedGrid = Math.floor(slidesGrid[i] * 100);
@@ -61,6 +63,7 @@ export default function slideTo(
       }
     }
   }
+
   // Directions locks
   if (swiper.initialized && slideIndex !== activeIndex) {
     if (

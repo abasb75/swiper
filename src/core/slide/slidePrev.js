@@ -47,6 +47,10 @@ export default function slidePrev(speed = this.params.speed, runCallbacks = true
       prevIndex = Math.max(prevIndex, 0);
     }
   }
+  /* @abasb75 */
+  if (params.activeLastSlideClass && swiper.activeIndex !== 0) {
+    prevIndex = swiper.activeIndex - 1;
+  }
   if (params.rewind && swiper.isBeginning) {
     const lastIndex =
       swiper.params.virtual && swiper.params.virtual.enabled && swiper.virtual
