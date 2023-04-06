@@ -32,7 +32,3 @@
 
 
 <p>for use in the react projec:
-
-```sh
-npm i @abasb75/swiper
-```
