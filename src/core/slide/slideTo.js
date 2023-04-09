@@ -38,8 +38,24 @@ export default function slideTo(
 
   if (snapIndex >= snapGrid.length) snapIndex = snapGrid.length - 1;
 
-  const translate = -snapGrid[snapIndex];
+  if (params.activeLastSlideClass) {
+    const gridWidth = Math.min(...swiper.slidesSizesGrid);
+    swiper.slidesSizesGrid = swiper.slidesSizesGrid.map((grid, i) => {
+      if (i === index) return grid * 2;
+      return gridWidth;
+    });
+    swiper.slidesGrid = swiper.slidesGrid.map((grid, i) => {
+      if (i <= index) {
+        return i * gridWidth;
+      }
+      return i * gridWidth + gridWidth;
+    });
+    console.log(swiper.slidesGrid);
+    swiper.snapGrid = swiper.slidesGrid.slice(0, slidesGrid.length - 2);
+  }
 
+  const translate = -swiper.snapGrid[snapIndex];
+  console.log(swiper.snapGrid, translate);
   // Normalize slideIndex
   if (params.normalizeSlideIndex && !params.activeLastSlideClass) {
     for (let i = 0; i < slidesGrid.length; i += 1) {
@@ -99,6 +115,7 @@ export default function slideTo(
   // Update Index
   if ((rtl && -translate === swiper.translate) || (!rtl && translate === swiper.translate)) {
     swiper.updateActiveIndex(slideIndex);
+
     // Update Height
     if (params.autoHeight) {
       swiper.updateAutoHeight();
