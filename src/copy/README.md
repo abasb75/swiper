@@ -1,11 +1,37 @@
-Swiper
-==========
+<p>@abasb5/swiperjs :</p>
+<p>this is a fork from : <a href="https://github.com/nolimits4web/swiper" >Swiper Js</a></p>
 
-Swiper - is the free and most modern mobile touch slider with hardware accelerated transitions and amazing native behavior. It is intended to be used in mobile websites, mobile web apps, and mobile native/hybrid apps.
+<p><b>Note :</b>this repository just worked for ReactJs</p>
 
-Swiper is not compatible with all platforms, it is a modern touch slider which is focused only on modern apps/platforms to bring the best experience and simplicity.
+<p>You can read swiperjs documentation <a href="https://swiperjs.com/react">here</a></p>
 
-# Getting Started
-  * [Getting Started Guide](https://swiperjs.com/get-started/)
-  * [API](https://swiperjs.com/swiper-api/)
-  * [Demos](https://swiperjs.com/demos/)
+<p><b>What is the diffirence?</b></p>
+
+<p>
+  <img src="screen.gif" alt="@abasb75/swiperjs react js paginate" title="@abasb75/swiperjs">
+</p>
+
+<p>in swiperjs <code>slidesPerView='auto'</code> props causes the class to not be activated for the last slides. <code>@abasb7/swiper</code> solves this problem with passing <code>activeLastSlideClass={true}</code> as a props!</p>
+
+```javascript
+import {Swiper,SwiperSlide} from '@abasb75/swiperjs/react';
+
+<Swiper
+  activeLastSlideClass={true}
+  ....
+ >
+   <SwiperSlide>Slide 1</SwiperSlide>
+   <SwiperSlide>Slide 2</SwiperSlide>
+   ...
+</Swiper>
+
+
+```
+
+<p><b>Note:</b> whitout <code>activeLastSlideClass={true}</code> props , there are no diffirence with th original swiperjs</p>
+
+<p>for use in the react projec:
+
+```sh
+npm i @abasb75/swiperjs
+```

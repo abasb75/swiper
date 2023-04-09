@@ -24,9 +24,9 @@
 </template>
 <script>
 // eslint-disable-next-line
-import { Navigation, Pagination, Scrollbar, A11y } from '@abasb75/swiper';
+import { Navigation, Pagination, Scrollbar, A11y } from '@abasb75/swiperjs';
 // eslint-disable-next-line
-import { Swiper, SwiperSlide } from '@abasb75/swiper/vue/swiper-vue.js';
+import { Swiper, SwiperSlide } from '@abasb75/swiperjs/vue/swiper-vue.js';
 import innerComp from './innerComp.vue';
 
 export default {

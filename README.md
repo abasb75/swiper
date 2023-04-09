@@ -1,4 +1,4 @@
-<p>@abasb5/swiper :</p>
+<p>@abasb5/swiperjs :</p>
 <p>this is a fork from : <a href="https://github.com/nolimits4web/swiper" >Swiper Js</a></p>
 
 <p><b>Note :</b>this repository just worked for ReactJs</p>
@@ -8,13 +8,13 @@
 <p><b>What is the diffirence?</b></p>
 
 <p>
-  <img src="screen.gif" alt="@abasb75/swiper react js paginate" title="@abasb75/swiper">
+  <img src="screen.gif" alt="@abasb75/swiperjs react js paginate" title="@abasb75/swiperjs">
 </p>
 
 <p>in swiperjs <code>slidesPerView='auto'</code> props causes the class to not be activated for the last slides. <code>@abasb7/swiper</code> solves this problem with passing <code>activeLastSlideClass={true}</code> as a props!</p>
 
-
 ```javascript
+import {Swiper,SwiperSlide} from '@abasb75/swiperjs/react';
 
 <Swiper
   activeLastSlideClass={true}
@@ -24,15 +24,14 @@
    <SwiperSlide>Slide 2</SwiperSlide>
    ...
 </Swiper>
-      
-      
+
+
 ```
 
 <p><b>Note:</b> whitout <code>activeLastSlideClass={true}</code> props , there are no diffirence with th original swiperjs</p>
 
-
 <p>for use in the react projec:
 
 ```sh
-npm i @abasb75/swiper
+npm i @abasb75/swiperjs
 ```

@@ -1,4 +1,4 @@
-import Swiper from '@abasb75/swiper';
+import Swiper from '@abasb75/swiperjs';
 import { isObject, extend } from './utils.js';
 import { paramsList } from './params-list.js';
 

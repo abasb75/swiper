@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, forwardRef } from 'react';
-import SwiperCore from '@abasb75/swiper';
+import SwiperCore from '@abasb75/swiperjs';
 import { getParams } from '../components-shared/get-params.js';
 import { mountSwiper } from '../components-shared/mount-swiper.js';
 import {

@@ -28,7 +28,7 @@ const App = () => {
         <SwiperSlide>Slide 5</SwiperSlide>
       </Swiper>
 
-      <h1>@abasb75/swiper with activeLastSlideClass : </h1>
+      <h1>@abasb75/swiperjs with activeLastSlideClass : </h1>
       <Swiper
         activeLastSlideClass={true}
         rewind={true}
